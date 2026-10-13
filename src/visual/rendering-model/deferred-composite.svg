@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 470" width="940" height="470" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#1f2328">
+  <rect x="0" y="0" width="940" height="470" fill="#ffffff" rx="8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#57606a"/>
+    </marker>
+  </defs>
+
+  <text x="470" y="32" text-anchor="middle" font-size="16" font-weight="bold">One event-loop pass: mutations record, the window-update phase draws</text>
+
+  <!-- ============ Left panel: script turn ============ -->
+  <rect x="20" y="50" width="420" height="400" rx="6" fill="#f6f8fa" stroke="#8c959f" stroke-width="1.5"/>
+  <text x="36" y="76" font-size="16" font-weight="bold">Script runs (events, timers, continuous handlers)</text>
+
+  <g stroke="#0969da" stroke-width="1.5" fill="#ffffff">
+    <rect x="36" y="92" width="388" height="44" rx="6"/>
+    <rect x="36" y="146" width="388" height="44" rx="6"/>
+    <rect x="36" y="200" width="388" height="44" rx="6"/>
+  </g>
+  <g font-family="Menlo, Consolas, monospace" font-size="12">
+    <text x="48" y="111">chara.left += 10;</text>
+    <text x="48" y="165">chara.opacity = 128;</text>
+    <text x="48" y="219">msg.drawText(20, 20, "...", 0xffffff);</text>
+  </g>
+  <g font-size="12" fill="#57606a">
+    <text x="48" y="128">dirty: old rect, new rect (parent coords)</text>
+    <text x="48" y="182">dirty: whole chara rect</text>
+    <text x="48" y="236">pixels written to msg bitmap now; dirty: text box</text>
+  </g>
+
+  <g stroke="#57606a" stroke-width="1.5" fill="none">
+    <line x1="230" y1="244" x2="230" y2="280" marker-end="url(#arrow)"/>
+  </g>
+  <text x="240" y="266" font-size="12" fill="#57606a">walk up the parent chain, clip, offset</text>
+
+  <rect x="36" y="282" width="388" height="62" rx="6" fill="#ffffff" stroke="#1a7f37" stroke-width="1.5"/>
+  <text x="48" y="303" font-weight="bold">Layer manager update region</text>
+  <text x="48" y="321" font-size="12">union of all dirty rects (one per primary layer)</text>
+  <text x="48" y="337" font-size="12" fill="#57606a">&gt; 300 rects: collapsed to bounding box</text>
+
+  <g stroke="#57606a" stroke-width="1.5" fill="none">
+    <line x1="230" y1="344" x2="230" y2="378" marker-end="url(#arrow)"/>
+  </g>
+
+  <rect x="36" y="380" width="388" height="56" rx="6" fill="#ffffff" stroke="#1a7f37" stroke-width="1.5"/>
+  <text x="48" y="401" font-weight="bold">Window update request</text>
+  <text x="48" y="419" font-size="12">queued at most once per window: N changes, 1 composite</text>
+
+  <!-- ============ connector ============ -->
+  <g stroke="#57606a" stroke-width="1.5" fill="none">
+    <line x1="440" y1="408" x2="470" y2="408"/>
+    <line x1="470" y1="408" x2="470" y2="114"/>
+    <line x1="470" y1="114" x2="496" y2="114" marker-end="url(#arrow)"/>
+  </g>
+  <text x="478" y="270" font-size="12" fill="#57606a" transform="rotate(-90 478 270)" text-anchor="middle">last phase of the pass</text>
+
+  <!-- ============ Right panel: window-update phase ============ -->
+  <rect x="496" y="50" width="424" height="400" rx="6" fill="#f6f8fa" stroke="#8c959f" stroke-width="1.5"/>
+  <text x="512" y="76" font-size="16" font-weight="bold">Window-update phase (engine draws)</text>
+
+  <g stroke="#b42318" stroke-width="1.5" fill="#ffffff">
+    <rect x="512" y="92" width="392" height="62" rx="6"/>
+    <rect x="512" y="166" width="392" height="62" rx="6"/>
+    <rect x="512" y="240" width="392" height="62" rx="6"/>
+    <rect x="512" y="314" width="392" height="62" rx="6"/>
+  </g>
+  <text x="524" y="113" font-weight="bold">1. onPaint</text>
+  <text x="524" y="131" font-size="12">pre-order over the whole tree, for layers with callOnPaint;</text>
+  <text x="524" y="147" font-size="12" fill="#57606a">drawing here still lands in this frame</text>
+
+  <text x="524" y="187" font-weight="bold">2. Composite the update region only</text>
+  <text x="524" y="205" font-size="12">back-to-front over visible layers, tvpgl blend kernels</text>
+  <text x="524" y="221" font-size="12" fill="#57606a">cached layers reuse their composited bitmap</text>
+
+  <text x="524" y="261" font-weight="bold">3. Hand finished rects to the draw device</text>
+  <text x="524" y="279" font-size="12">copy into texture, present (now, or at VBlank)</text>
+  <text x="524" y="295" font-size="12" fill="#57606a">nothing dirty: no composite, no present</text>
+
+  <text x="524" y="335" font-weight="bold">4. Clear the update region</text>
+  <text x="524" y="353" font-size="12">the tree and every bitmap stay as they are</text>
+  <text x="524" y="369" font-size="12" fill="#57606a">next frame starts from the retained state</text>
+
+  <text x="512" y="408" font-size="12" fill="#57606a">Window.update() invalidates the whole window area and</text>
+  <text x="512" y="424" font-size="12" fill="#57606a">runs this phase synchronously, inside the calling script.</text>
+</svg>

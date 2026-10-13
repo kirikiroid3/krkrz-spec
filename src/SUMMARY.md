@@ -20,6 +20,7 @@
 
 # Visual
 
+- [Rendering Model](visual/rendering-model.md)
 - [Window]()
 - [Layer]()
 - [Bitmap and Image Loading]()

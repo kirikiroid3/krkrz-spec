@@ -298,6 +298,10 @@ detection.
 The renderer's pixel results are therefore defined by the C kernels. The
 portability problem is only in the presentation step.
 
+See [Rendering Model](visual/rendering-model.md) for the script-visible
+side: the retained `Layer` tree, invalidation, and when `onPaint` and the
+composite run.
+
 ## Sound and video
 
 **Sound.** `WaveSoundBuffer` works as a pipeline:
