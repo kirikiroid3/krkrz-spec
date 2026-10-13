@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 850" width="960" height="850">
+<rect x="0" y="0" width="960" height="850" rx="8" fill="#ffffff"/>
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#57606a"/></marker><marker id="arrs" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M10,0 L0,5 L10,10 z" fill="#57606a"/></marker></defs>
+<g font-family="Helvetica, Arial, sans-serif">
+<rect x="20" y="16" width="920" height="116" rx="6" fill="#fff8e1" stroke="#b08800" stroke-width="1.5"/>
+<text x="32" y="37" font-size="14" font-weight="bold" fill="#1f2328">Game data <tspan font-weight="normal" font-size="12" font-family="Menlo, Consolas, monospace">(data.xp3 / folder / XP3 appended to exe)</tspan></text>
+<rect x="32" y="48" width="110" height="42" rx="6" fill="#ffffff" stroke="#b08800" stroke-width="1.5"/>
+<text x="87.0" y="73.5" font-size="12" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#1f2328">startup.tjs</text>
+<rect x="158" y="48" width="170" height="42" rx="6" fill="#ffffff" stroke="#b08800" stroke-width="1.5"/>
+<text x="243.0" y="65.5" font-size="13" text-anchor="middle" fill="#1f2328">KAG3 system scripts</text>
+<text x="243.0" y="81.5" font-size="12" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#1f2328">(*.tjs)</text>
+<rect x="344" y="48" width="120" height="42" rx="6" fill="#ffffff" stroke="#b08800" stroke-width="1.5"/>
+<text x="404.0" y="65.5" font-size="13" text-anchor="middle" fill="#1f2328">Scenarios</text>
+<text x="404.0" y="81.5" font-size="12" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#1f2328">(*.ks)</text>
+<rect x="480" y="48" width="200" height="42" rx="6" fill="#ffffff" stroke="#b08800" stroke-width="1.5"/>
+<text x="580.0" y="65.5" font-size="13" text-anchor="middle" fill="#1f2328">Images (TLG/PNG/JPEG),</text>
+<text x="580.0" y="81.5" font-size="13" text-anchor="middle" fill="#1f2328">audio, video</text>
+<rect x="758" y="48" width="140" height="42" rx="6" fill="#ffffff" stroke="#b08800" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="828.0" y="65.5" font-size="13" text-anchor="middle" fill="#1f2328">bytecode</text>
+<text x="828.0" y="81.5" font-size="12" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#1f2328">(TJS2100)</text>
+<path d="M158,96 v6 H464 v-6 M311,102 v5" fill="none" stroke="#b08800" stroke-width="1.5"/>
+<text x="311" y="120" font-size="11" text-anchor="middle" fill="#57606a">KAG = TJS framework run at runtime (not part of krkrz)</text>
+<line x1="87" y1="132" x2="87" y2="166" stroke="#57606a" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="99" y="153" font-size="13" fill="#1f2328">source text compiled at load time</text>
+<line x1="828" y1="90" x2="828" y2="196" stroke="#57606a" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arr)"/>
+<text x="838" y="153" font-size="11" fill="#57606a">precompiled (optional)</text>
+<rect x="20" y="166" width="920" height="122" rx="6" fill="#e8f0fe" stroke="#1a5fb4" stroke-width="1.5"/>
+<text x="32" y="187" font-size="14" font-weight="bold" fill="#1f2328">TJS2 script engine <tspan font-weight="normal" font-size="12" fill="#57606a" font-family="Menlo, Consolas, monospace">tjs2/</tspan></text>
+<rect x="32" y="196" width="170" height="44" rx="6" fill="#ffffff" stroke="#1a5fb4" stroke-width="1.5"/>
+<text x="117.0" y="214.5" font-size="13" text-anchor="middle" fill="#1f2328">Lexer + preprocessor</text>
+<text x="117.0" y="230.5" font-size="12" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#1f2328">(tjsLex)</text>
+<rect x="230" y="196" width="240" height="44" rx="6" fill="#ffffff" stroke="#1a5fb4" stroke-width="1.5"/>
+<text x="350.0" y="214.5" font-size="13" text-anchor="middle" fill="#1f2328">Bison parser → code generator</text>
+<text x="350.0" y="230.5" font-size="12" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#1f2328">(tjsInterCodeGen)</text>
+<rect x="498" y="196" width="170" height="44" rx="6" fill="#ffffff" stroke="#1a5fb4" stroke-width="1.5"/>
+<text x="583.0" y="214.5" font-size="13" text-anchor="middle" fill="#1f2328">Register VM</text>
+<text x="583.0" y="230.5" font-size="12" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#1f2328">(tjsInterCodeExec)</text>
+<line x1="202" y1="218" x2="229" y2="218" stroke="#57606a" stroke-width="1.5" marker-end="url(#arr)"/>
+<line x1="470" y1="218" x2="497" y2="218" stroke="#57606a" stroke-width="1.5" marker-end="url(#arr)"/>
+<rect x="728" y="196" width="200" height="44" rx="6" fill="#ffffff" stroke="#1a5fb4" stroke-width="1.5"/>
+<text x="828.0" y="214.5" font-size="13" text-anchor="middle" fill="#1f2328">Bytecode loader /</text>
+<text x="828.0" y="230.5" font-size="13" text-anchor="middle" fill="#1f2328">exporter</text>
+<rect x="32" y="250" width="436" height="26" rx="6" fill="#ffffff" stroke="#1a5fb4" stroke-width="1.5"/>
+<text x="250.0" y="267.5" font-size="13" text-anchor="middle" fill="#1f2328">Built-ins: Array, Dictionary, Date, Math, RegExp, Exception</text>
+<text x="484" y="267" font-size="12" fill="#57606a"><tspan font-family="Menlo, Consolas, monospace">iTJSDispatch2</tspan> object model, ref-counted</text>
+<line x1="87" y1="288" x2="87" y2="322" stroke="#57606a" stroke-width="1.5" marker-start="url(#arrs)" marker-end="url(#arr)"/>
+<text x="99" y="309" font-size="13" fill="#1f2328"><tspan font-family="Menlo, Consolas, monospace">iTJSDispatch2</tspan> calls</text>
+<rect x="20" y="322" width="640" height="100" rx="6" fill="#e6f4ea" stroke="#1e7e34" stroke-width="1.5"/>
+<text x="32" y="343" font-size="14" font-weight="bold" fill="#1f2328">TJS-visible classes <tspan font-weight="normal" font-size="12" fill="#57606a" font-family="Menlo, Consolas, monospace">(*Intf.cpp, tTJSNC_* / tTJSNI_Base*)</tspan></text>
+<rect x="32" y="354" width="62" height="24" rx="6" fill="#ffffff" stroke="#1e7e34" stroke-width="1.5"/>
+<text x="63.0" y="370.5" font-size="12" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#1f2328">Window</text>
+<rect x="102" y="354" width="54" height="24" rx="6" fill="#ffffff" stroke="#1e7e34" stroke-width="1.5"/>
+<text x="129.0" y="370.5" font-size="12" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#1f2328">Layer</text>
+<rect x="164" y="354" width="62" height="24" rx="6" fill="#ffffff" stroke="#1e7e34" stroke-width="1.5"/>
+<text x="195.0" y="370.5" font-size="12" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#1f2328">Bitmap</text>
+<rect x="234" y="354" width="128" height="24" rx="6" fill="#ffffff" stroke="#1e7e34" stroke-width="1.5"/>
+<text x="298.0" y="370.5" font-size="12" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#1f2328">WaveSoundBuffer</text>
+<rect x="370" y="354" width="106" height="24" rx="6" fill="#ffffff" stroke="#1e7e34" stroke-width="1.5"/>
+<text x="423.0" y="370.5" font-size="12" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#1f2328">VideoOverlay</text>
+<rect x="484" y="354" width="54" height="24" rx="6" fill="#ffffff" stroke="#1e7e34" stroke-width="1.5"/>
+<text x="511.0" y="370.5" font-size="12" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#1f2328">Timer</text>
+<rect x="546" y="354" width="76" height="24" rx="6" fill="#ffffff" stroke="#1e7e34" stroke-width="1.5"/>
+<text x="584.0" y="370.5" font-size="12" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#1f2328">Storages</text>
+<rect x="32" y="386" width="69" height="24" rx="6" fill="#ffffff" stroke="#1e7e34" stroke-width="1.5"/>
+<text x="66.5" y="402.5" font-size="12" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#1f2328">Scripts</text>
+<rect x="109" y="386" width="62" height="24" rx="6" fill="#ffffff" stroke="#1e7e34" stroke-width="1.5"/>
+<text x="140.0" y="402.5" font-size="12" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#1f2328">System</text>
+<rect x="179" y="386" width="69" height="24" rx="6" fill="#ffffff" stroke="#1e7e34" stroke-width="1.5"/>
+<text x="213.5" y="402.5" font-size="12" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#1f2328">Plugins</text>
+<rect x="256" y="386" width="47" height="24" rx="6" fill="#ffffff" stroke="#1e7e34" stroke-width="1.5"/>
+<text x="279.5" y="402.5" font-size="12" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#1f2328">Font</text>
+<rect x="311" y="386" width="47" height="24" rx="6" fill="#ffffff" stroke="#1e7e34" stroke-width="1.5"/>
+<text x="334.5" y="402.5" font-size="12" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#1f2328">Rect</text>
+<rect x="366" y="386" width="106" height="24" rx="6" fill="#ffffff" stroke="#1e7e34" stroke-width="1.5"/>
+<text x="419.0" y="402.5" font-size="12" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#1f2328">AsyncTrigger</text>
+<rect x="480" y="386" width="84" height="24" rx="6" fill="#ffffff" stroke="#1e7e34" stroke-width="1.5"/>
+<text x="522.0" y="402.5" font-size="12" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#1f2328">Clipboard</text>
+<rect x="572" y="386" width="54" height="24" rx="6" fill="#ffffff" stroke="#1e7e34" stroke-width="1.5"/>
+<text x="599.0" y="402.5" font-size="12" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#1f2328">Debug</text>
+<line x1="87" y1="422" x2="87" y2="456" stroke="#57606a" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="99" y="443" font-size="13" fill="#1f2328">uses</text>
+<rect x="20" y="456" width="640" height="140" rx="6" fill="#e6f4ea" stroke="#1e7e34" stroke-width="1.5"/>
+<text x="648" y="343" font-size="11" text-anchor="end" fill="#57606a">engine native classes exposed to TJS</text>
+<text x="32" y="477" font-size="14" font-weight="bold" fill="#1f2328">Portable core services</text>
+<rect x="32" y="486" width="120" height="44" rx="6" fill="#ffffff" stroke="#1e7e34" stroke-width="1.5"/>
+<text x="92.0" y="504.5" font-size="13" text-anchor="middle" fill="#1f2328">Storage &amp;</text>
+<text x="92.0" y="520.5" font-size="13" text-anchor="middle" fill="#1f2328">XP3 archives</text>
+<rect x="164" y="486" width="276" height="44" rx="6" fill="#ffffff" stroke="#1e7e34" stroke-width="1.5"/>
+<text x="302.0" y="504.5" font-size="13" text-anchor="middle" fill="#1f2328">Event queue</text>
+<text x="302.0" y="520.5" font-size="12" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#1f2328">TVPPostEvent / TVPDeliverAllEvents</text>
+<rect x="452" y="486" width="176" height="44" rx="6" fill="#ffffff" stroke="#1e7e34" stroke-width="1.5"/>
+<text x="540.0" y="504.5" font-size="13" text-anchor="middle" fill="#1f2328">Layer tree compositor</text>
+<text x="540.0" y="520.5" font-size="12" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#1f2328">(LayerManager)</text>
+<rect x="32" y="540" width="150" height="44" rx="6" fill="#ffffff" stroke="#1e7e34" stroke-width="1.5"/>
+<text x="107.0" y="558.5" font-size="13" text-anchor="middle" fill="#1f2328"><tspan font-family="Menlo, Consolas, monospace">tvpgl</tspan> pixel kernels</text>
+<text x="107.0" y="574.5" font-size="13" text-anchor="middle" fill="#1f2328">(C + SSE2/AVX2)</text>
+<rect x="194" y="540" width="170" height="44" rx="6" fill="#ffffff" stroke="#1e7e34" stroke-width="1.5"/>
+<text x="279.0" y="558.5" font-size="13" text-anchor="middle" fill="#1f2328">Wave decoder registry</text>
+<text x="279.0" y="574.5" font-size="13" text-anchor="middle" fill="#1f2328">+ loop manager</text>
+<rect x="376" y="540" width="130" height="44" rx="6" fill="#ffffff" stroke="#1e7e34" stroke-width="1.5"/>
+<text x="441.0" y="558.5" font-size="13" text-anchor="middle" fill="#1f2328">Text streams</text>
+<text x="441.0" y="574.5" font-size="13" text-anchor="middle" fill="#1f2328">&amp; encodings</text>
+<rect x="518" y="540" width="110" height="44" rx="6" fill="#ffffff" stroke="#1e7e34" stroke-width="1.5"/>
+<text x="573.0" y="566.5" font-size="13" text-anchor="middle" fill="#1f2328">Messages</text>
+<line x1="20" y1="626" x2="660" y2="626" stroke="#b42318" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="656" y="619" font-size="11" text-anchor="end" fill="#b42318">portability boundary (by convention only — <tspan font-family="Menlo, Consolas, monospace">windows.h</tspan> is in every TU)</text>
+<line x1="87" y1="596" x2="87" y2="656" stroke="#57606a" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="99" y="647" font-size="13" fill="#1f2328">Intf → Impl (<tspan font-family="Menlo, Consolas, monospace">#include XxxImpl.h</tspan>)</text>
+<rect x="20" y="656" width="640" height="140" rx="6" fill="#fdecea" stroke="#b42318" stroke-width="1.5"/>
+<text x="32" y="677" font-size="14" font-weight="bold" fill="#1f2328">Win32 platform layer <tspan font-weight="normal" font-size="12" fill="#57606a" font-family="Menlo, Consolas, monospace">win32/*Impl, environ/win32, movie/win32</tspan></text>
+<rect x="32" y="686" width="180" height="44" rx="6" fill="#ffffff" stroke="#b42318" stroke-width="1.5"/>
+<text x="122.0" y="704.5" font-size="13" text-anchor="middle" fill="#1f2328">WinMain + message loop</text>
+<text x="122.0" y="720.5" font-size="12" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#1f2328">(tTVPApplication)</text>
+<rect x="224" y="686" width="150" height="44" rx="6" fill="#ffffff" stroke="#b42318" stroke-width="1.5"/>
+<text x="299.0" y="712.5" font-size="13" text-anchor="middle" fill="#1f2328">Window form (HWND)</text>
+<rect x="468" y="686" width="180" height="44" rx="6" fill="#ffffff" stroke="#b42318" stroke-width="1.5"/>
+<text x="558.0" y="704.5" font-size="13" text-anchor="middle" fill="#1f2328">Plugin loader</text>
+<text x="558.0" y="720.5" font-size="12" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#1f2328">(LoadLibrary + V2Link)</text>
+<rect x="32" y="740" width="180" height="44" rx="6" fill="#ffffff" stroke="#b42318" stroke-width="1.5"/>
+<text x="122.0" y="758.5" font-size="13" text-anchor="middle" fill="#1f2328">Draw device: Direct3D 9</text>
+<text x="122.0" y="774.5" font-size="12" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#1f2328">(tTVPBasicDrawDevice)</text>
+<rect x="224" y="740" width="110" height="44" rx="6" fill="#ffffff" stroke="#b42318" stroke-width="1.5"/>
+<text x="279.0" y="766.5" font-size="13" text-anchor="middle" fill="#1f2328">DirectSound</text>
+<rect x="346" y="740" width="140" height="44" rx="6" fill="#ffffff" stroke="#b42318" stroke-width="1.5"/>
+<text x="416.0" y="758.5" font-size="13" text-anchor="middle" fill="#1f2328">DirectShow /</text>
+<text x="416.0" y="774.5" font-size="13" text-anchor="middle" fill="#1f2328">Media Foundation</text>
+<rect x="498" y="740" width="150" height="44" rx="6" fill="#ffffff" stroke="#b42318" stroke-width="1.5"/>
+<text x="573.0" y="758.5" font-size="13" text-anchor="middle" fill="#1f2328">DirectInput, IMM32</text>
+<text x="573.0" y="774.5" font-size="13" text-anchor="middle" fill="#1f2328">IME, registry</text>
+<rect x="20" y="808" width="920" height="28" rx="6" fill="#f6f8fa" stroke="#8c959f" stroke-width="1.5"/>
+<text x="480" y="827" font-size="13" text-anchor="middle" font-weight="bold" fill="#1f2328">Windows OS</text>
+<rect x="760" y="322" width="180" height="474" rx="6" fill="#f3e8fd" stroke="#6f42c1" stroke-width="1.5"/>
+<text x="772" y="344" font-size="14" font-weight="bold" fill="#1f2328">Plugin DLLs</text>
+<text x="772" y="362" font-size="12" font-family="Menlo, Consolas, monospace" fill="#57606a">(*.dll / *.tpm)</text>
+<line x1="760" y1="386" x2="661" y2="386" stroke="#57606a" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="710" y="368" font-size="11" text-anchor="middle" fill="#57606a">adds TJS</text>
+<text x="710" y="380" font-size="11" text-anchor="middle" fill="#57606a">classes</text>
+<rect x="772" y="398" width="156" height="44" rx="6" fill="#ffffff" stroke="#6f42c1" stroke-width="1.5"/>
+<text x="850.0" y="416.5" font-size="12" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#1f2328">KAGParser,</text>
+<text x="850.0" y="432.5" font-size="12" text-anchor="middle" font-family="Menlo, Consolas, monospace" fill="#1f2328">wuvorbis, …</text>
+<text x="772" y="466" font-size="11" fill="#57606a">Win32 PE, <tspan font-family="Menlo, Consolas, monospace">__stdcall</tspan>,</text>
+<text x="772" y="481" font-size="11" fill="#57606a">MSVC C++ ABI</text>
+<line x1="648" y1="708" x2="759" y2="708" stroke="#57606a" stroke-width="1.5" marker-end="url(#arr)"/>
+<text x="772" y="662" font-size="11" font-family="Menlo, Consolas, monospace" fill="#1f2328">V2Link(</text>
+<text x="772" y="676" font-size="11" font-family="Menlo, Consolas, monospace" fill="#1f2328">iTVPFunctionExporter)</text>
+<text x="772" y="691" font-size="11" fill="#57606a">— 653 exported functions</text>
+</g>
+</svg>

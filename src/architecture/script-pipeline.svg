@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 466" width="940" height="466" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#1f2328">
+  <rect x="0" y="0" width="940" height="466" fill="#ffffff" rx="8"/>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#57606a"/>
+    </marker>
+  </defs>
+
+  <!-- Title + legend -->
+  <text x="256" y="42" font-size="16" font-weight="bold">How a script file becomes running code</text>
+  <g font-size="12">
+    <rect x="256" y="66" width="14" height="14" rx="3" fill="#fff8e1" stroke="#b08800" stroke-width="1.5"/>
+    <text x="276" y="78">script source / game data</text>
+    <rect x="436" y="66" width="14" height="14" rx="3" fill="#e8f0fe" stroke="#1a5fb4" stroke-width="1.5"/>
+    <text x="456" y="78">TJS2 script engine</text>
+    <rect x="581" y="66" width="14" height="14" rx="3" fill="#e6f4ea" stroke="#1e7e34" stroke-width="1.5"/>
+    <text x="601" y="78">portable engine (host functions)</text>
+    <rect x="801" y="66" width="14" height="14" rx="3" fill="#f6f8fa" stroke="#8c959f" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <text x="821" y="78">rare / optional</text>
+  </g>
+
+  <!-- Column 1: entry -->
+  <rect x="20" y="16" width="200" height="52" rx="6" fill="#fff8e1" stroke="#b08800" stroke-width="1.5"/>
+  <text x="120" y="37" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="12">Scripts.execStorage(name)</text>
+  <text x="120" y="57" text-anchor="middle">or <tspan font-family="Menlo, Consolas, monospace" font-size="12">startup.tjs</tspan></text>
+
+  <line x1="120" y1="68" x2="120" y2="88" stroke="#57606a" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <rect x="20" y="88" width="200" height="36" rx="6" fill="#e6f4ea" stroke="#1e7e34" stroke-width="1.5"/>
+  <text x="120" y="111" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13">TVPExecuteStorage</text>
+
+  <line x1="120" y1="124" x2="120" y2="146" stroke="#57606a" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <polygon points="120,146 220,196 120,246 20,196" fill="#f6f8fa" stroke="#8c959f" stroke-width="1.5"/>
+  <text x="120" y="191" text-anchor="middle">first 8 bytes ==</text>
+  <text x="120" y="209" text-anchor="middle"><tspan font-family="Menlo, Consolas, monospace" font-size="12">"TJS2100\0"</tspan>?</text>
+
+  <!-- no branch (main path) -->
+  <line x1="220" y1="196" x2="256" y2="196" stroke="#57606a" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="238" y="188" text-anchor="middle" font-weight="bold">no</text>
+
+  <!-- Row A: text path -->
+  <rect x="256" y="158" width="152" height="76" rx="6" fill="#e6f4ea" stroke="#1e7e34" stroke-width="1.5"/>
+  <text x="332" y="184" text-anchor="middle">read as text</text>
+  <text x="332" y="200" text-anchor="middle">UTF-8 default,</text>
+  <text x="332" y="216" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="12">-readencoding</text>
+
+  <line x1="408" y1="196" x2="426" y2="196" stroke="#57606a" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <rect x="426" y="158" width="152" height="76" rx="6" fill="#e8f0fe" stroke="#1a5fb4" stroke-width="1.5"/>
+  <text x="502" y="184" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="12">tTJSLexicalAnalyzer</text>
+  <text x="502" y="200" text-anchor="middle">+ <tspan font-family="Menlo, Consolas, monospace" font-size="12">@if</tspan> / <tspan font-family="Menlo, Consolas, monospace" font-size="12">@set</tspan></text>
+  <text x="502" y="216" text-anchor="middle">preprocessor</text>
+
+  <line x1="578" y1="196" x2="596" y2="196" stroke="#57606a" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <rect x="596" y="158" width="152" height="76" rx="6" fill="#e8f0fe" stroke="#1a5fb4" stroke-width="1.5"/>
+  <text x="672" y="192" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13">yyparse</text>
+  <text x="672" y="208" text-anchor="middle">(bison, <tspan font-family="Menlo, Consolas, monospace" font-size="12">tjs.y</tspan>)</text>
+
+  <line x1="748" y1="196" x2="766" y2="196" stroke="#57606a" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <rect x="766" y="158" width="152" height="76" rx="6" fill="#e8f0fe" stroke="#1a5fb4" stroke-width="1.5"/>
+  <text x="842" y="176" text-anchor="middle">code generation</text>
+  <text x="842" y="192" text-anchor="middle">in parser actions;</text>
+  <text x="842" y="208" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="12">Commit()</text>
+  <text x="842" y="224" text-anchor="middle">jump threading</text>
+
+  <!-- wrap from codegen down to the intermediate code context -->
+  <polyline points="842,234 842,257 508,257 508,280" fill="none" stroke="#57606a" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- yes branch (bytecode) -->
+  <polyline points="120,246 120,312 256,312" fill="none" stroke="#57606a" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arr)"/>
+  <text x="128" y="282" font-weight="bold">yes</text>
+
+  <!-- Row B -->
+  <rect x="256" y="280" width="146" height="64" rx="6" fill="#e8f0fe" stroke="#1a5fb4" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="329" y="307" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="12">tTJSByteCodeLoader</text>
+  <text x="329" y="323" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="12">::ReadByteCode</text>
+
+  <line x1="402" y1="312" x2="426" y2="312" stroke="#57606a" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arr)"/>
+
+  <rect x="426" y="280" width="164" height="64" rx="6" fill="#e8f0fe" stroke="#1a5fb4" stroke-width="1.5"/>
+  <text x="508" y="299" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="12">tTJSInterCodeContext</text>
+  <text x="508" y="315" text-anchor="middle">code words</text>
+  <text x="508" y="331" text-anchor="middle">+ constants</text>
+
+  <line x1="590" y1="312" x2="614" y2="312" stroke="#57606a" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <rect x="614" y="280" width="134" height="64" rx="6" fill="#e8f0fe" stroke="#1a5fb4" stroke-width="1.5"/>
+  <text x="681" y="299" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13">ExecuteCode</text>
+  <text x="681" y="315" text-anchor="middle">switch-dispatch</text>
+  <text x="681" y="331" text-anchor="middle">register VM</text>
+
+  <line x1="748" y1="312" x2="772" y2="312" stroke="#57606a" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <rect x="772" y="280" width="148" height="64" rx="6" fill="#e6f4ea" stroke="#1e7e34" stroke-width="1.5"/>
+  <text x="846" y="299" text-anchor="middle">calls into native</text>
+  <text x="846" y="315" text-anchor="middle">classes via</text>
+  <text x="846" y="331" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="12">iTJSDispatch2</text>
+
+  <!-- Row C: optional bytecode export -->
+  <line x1="508" y1="344" x2="508" y2="372" stroke="#57606a" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arr)"/>
+
+  <rect x="256" y="372" width="334" height="78" rx="6" fill="#e6f4ea" stroke="#1e7e34" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="270" y="394" font-family="Menlo, Consolas, monospace" font-size="12">Scripts.compileStorage(src, out)</text>
+  <text x="270" y="413">→ <tspan font-family="Menlo, Consolas, monospace" font-size="12">ExportByteCode</tspan> → <tspan font-family="Menlo, Consolas, monospace" font-size="12">TJS2100</tspan> file</text>
+  <text x="270" y="438" font-size="11" fill="#57606a">optional, runtime-only; no build-time compiler in tree</text>
+  <!-- file icon -->
+  <path d="M542,382 h22 l10,10 v30 h-32 z" fill="#fff8e1" stroke="#b08800" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M564,382 v10 h10" fill="none" stroke="#b08800" stroke-width="1.5" stroke-linejoin="round"/>
+  <line x1="548" y1="400" x2="568" y2="400" stroke="#b08800" stroke-width="1"/>
+  <line x1="548" y1="406" x2="568" y2="406" stroke="#b08800" stroke-width="1"/>
+  <line x1="548" y1="412" x2="562" y2="412" stroke="#b08800" stroke-width="1"/>
+
+  <!-- Note near VM -->
+  <rect x="614" y="372" width="306" height="78" rx="6" fill="#f6f8fa" stroke="#8c959f" stroke-width="1.5"/>
+  <g font-size="12">
+    <text x="628" y="392">No JIT · refcounting, no tracing GC</text>
+    <text x="628" y="408"><tspan font-family="Menlo, Consolas, monospace">eval()</tspan> and <tspan font-family="Menlo, Consolas, monospace">Scripts.eval</tspan> compile at</text>
+    <text x="628" y="424">runtime (64-entry cache for anonymous</text>
+    <text x="628" y="440">expressions)</text>
+  </g>
+</svg>

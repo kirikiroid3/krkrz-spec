@@ -2,6 +2,7 @@
 
 [Introduction](introduction.md)
 [Writing Conventions](conventions.md)
+[Architecture Overview](architecture.md)
 
 # Script Engine
 
