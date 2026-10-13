@@ -1,0 +1,10 @@
+[book]
+title = "Kirikiri Z Specification"
+authors = ["Nikaidou Haruki"]
+language = "en"
+description = "Behavioral specification of Kirikiri Z (krkrz), derived from its source code, for a cross-platform Rust reimplementation."
+
+[build]
+# Every chapter linked from SUMMARY.md must exist; planned-but-unwritten
+# chapters are listed as drafts (`- [Title]()`) instead of empty stub files.
+create-missing = false
