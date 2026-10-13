@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 470" width="940" height="470" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#1f2328">
+  <rect x="0" y="0" width="940" height="470" fill="#ffffff" rx="8"/>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#57606a"/>
+    </marker>
+  </defs>
+
+  <!-- Title + legend -->
+  <text x="20" y="36" font-size="16" font-weight="bold">What <tspan font-family="Menlo, Consolas, monospace" font-size="15">new B(args)</tspan> builds for <tspan font-family="Menlo, Consolas, monospace" font-size="15">class B extends A, Layer</tspan></text>
+  <g font-size="12">
+    <rect x="20" y="52" width="14" height="14" rx="3" fill="#e8f0fe" stroke="#1a5fb4" stroke-width="1.5"/>
+    <text x="40" y="64">TJS2 runtime object</text>
+    <rect x="190" y="52" width="14" height="14" rx="3" fill="#e6f4ea" stroke="#1e7e34" stroke-width="1.5"/>
+    <text x="210" y="64">engine native class / instance</text>
+    <rect x="420" y="52" width="14" height="14" rx="3" fill="#f6f8fa" stroke="#8c959f" stroke-width="1.5"/>
+    <text x="440" y="64">steps</text>
+  </g>
+
+  <!-- Class objects -->
+  <rect x="20" y="90" width="230" height="72" rx="6" fill="#e8f0fe" stroke="#1a5fb4" stroke-width="1.5"/>
+  <text x="32" y="110" font-family="Menlo, Consolas, monospace" font-size="13" font-weight="bold">global.B</text>
+  <text x="32" y="128" font-size="12">tTJSInterCodeContext (ctClass)</text>
+  <text x="32" y="146" font-size="12">members: <tspan font-family="Menlo, Consolas, monospace">B()</tspan>, <tspan font-family="Menlo, Consolas, monospace">hello()</tspan></text>
+
+  <rect x="20" y="176" width="230" height="72" rx="6" fill="#e8f0fe" stroke="#1a5fb4" stroke-width="1.5"/>
+  <text x="32" y="196" font-family="Menlo, Consolas, monospace" font-size="13" font-weight="bold">global.A</text>
+  <text x="32" y="214" font-size="12">tTJSInterCodeContext (ctClass)</text>
+  <text x="32" y="232" font-size="12">members: <tspan font-family="Menlo, Consolas, monospace">A()</tspan>, <tspan font-family="Menlo, Consolas, monospace">hello()</tspan></text>
+
+  <rect x="20" y="262" width="230" height="72" rx="6" fill="#e6f4ea" stroke="#1e7e34" stroke-width="1.5"/>
+  <text x="32" y="282" font-family="Menlo, Consolas, monospace" font-size="13" font-weight="bold">global.Layer</text>
+  <text x="32" y="300" font-size="12">tTJSNativeClass</text>
+  <text x="32" y="318" font-size="12">members: <tspan font-family="Menlo, Consolas, monospace">Layer()</tspan>, <tspan font-family="Menlo, Consolas, monospace">width</tspan>, …</text>
+
+  <line x1="250" y1="126" x2="270" y2="126" stroke="#57606a" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="250" y1="212" x2="270" y2="212" stroke="#57606a" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="250" y1="298" x2="270" y2="298" stroke="#57606a" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Steps -->
+  <rect x="270" y="90" width="300" height="300" rx="6" fill="#f6f8fa" stroke="#8c959f" stroke-width="1.5"/>
+  <g font-size="12">
+    <text x="284" y="112" font-weight="bold">B.CreateNew</text>
+    <text x="284" y="134">1. create a <tspan font-family="Menlo, Consolas, monospace">tTJSCustomObject</tspan></text>
+    <text x="284" y="156">2. run B's body on it: <tspan font-family="Menlo, Consolas, monospace">addci "B"</tspan></text>
+    <text x="284" y="184">3. <tspan font-family="Menlo, Consolas, monospace">extends A</tspan>: call A with this =</text>
+    <text x="300" y="200">instance; <tspan font-family="Menlo, Consolas, monospace">addci "A"</tspan>, copy A's members</text>
+    <text x="284" y="228">4. <tspan font-family="Menlo, Consolas, monospace">extends Layer</tspan>: add <tspan font-family="Menlo, Consolas, monospace">"Layer"</tspan>,</text>
+    <text x="300" y="244">register <tspan font-family="Menlo, Consolas, monospace">tTJSNI_Layer</tspan> in a slot,</text>
+    <text x="300" y="260">copy Layer's non-static members</text>
+    <text x="284" y="288">5. <tspan font-family="Menlo, Consolas, monospace">REGMEMBER</tspan>: copy B's members,</text>
+    <text x="300" y="304">overriding A's <tspan font-family="Menlo, Consolas, monospace">hello</tspan></text>
+    <text x="284" y="332">6. call <tspan font-family="Menlo, Consolas, monospace">instance.B(args)</tspan>;</text>
+    <text x="300" y="348">it calls <tspan font-family="Menlo, Consolas, monospace">super.A()</tspan> and</text>
+    <text x="300" y="364"><tspan font-family="Menlo, Consolas, monospace">super.Layer(win, parent)</tspan></text>
+  </g>
+
+  <line x1="570" y1="240" x2="590" y2="240" stroke="#57606a" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Instance -->
+  <rect x="590" y="90" width="330" height="300" rx="6" fill="#e8f0fe" stroke="#1a5fb4" stroke-width="1.5"/>
+  <text x="604" y="112" font-weight="bold">instance (<tspan font-family="Menlo, Consolas, monospace" font-size="12">tTJSCustomObject</tspan>)</text>
+
+  <rect x="604" y="122" width="302" height="30" rx="4" fill="#ffffff" stroke="#1a5fb4" stroke-width="1"/>
+  <text x="614" y="142" font-size="12">ClassNames: <tspan font-family="Menlo, Consolas, monospace">["B", "A", "Layer"]</tspan></text>
+
+  <rect x="604" y="162" width="302" height="48" rx="4" fill="#ffffff" stroke="#1a5fb4" stroke-width="1"/>
+  <text x="614" y="180" font-size="12">native slots (at most 4)</text>
+  <rect x="614" y="186" width="200" height="18" rx="3" fill="#e6f4ea" stroke="#1e7e34" stroke-width="1"/>
+  <text x="622" y="199" font-size="11"><tspan font-family="Menlo, Consolas, monospace">Layer ID → tTJSNI_Layer</tspan></text>
+
+  <rect x="604" y="220" width="302" height="156" rx="4" fill="#ffffff" stroke="#1a5fb4" stroke-width="1"/>
+  <text x="614" y="238" font-size="12">members (hash table)</text>
+  <g font-family="Menlo, Consolas, monospace" font-size="11">
+    <text x="614" y="258">hello → (B.hello, this)</text>
+    <text x="614" y="276">B     → (B.B, this)</text>
+    <text x="614" y="294">A     → (A.A, this)</text>
+    <text x="614" y="312">Layer → (Layer.Layer, this)</text>
+    <text x="614" y="330">width → (Layer.width, this)</text>
+  </g>
+  <text x="614" y="352" font-size="11" fill="#57606a">ObjThis == instance is not counted</text>
+  <text x="614" y="367" font-size="11" fill="#57606a">(CheckObjectClosureAdd), so no self-cycle</text>
+
+  <!-- weak self reference -->
+  <path d="M845,254 C905,254 905,106 860,106" fill="none" stroke="#57606a" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arr)"/>
+  <text x="900" y="186" font-size="11" fill="#57606a" text-anchor="end">weak</text>
+
+  <!-- Bottom note -->
+  <rect x="20" y="406" width="900" height="48" rx="6" fill="#f6f8fa" stroke="#8c959f" stroke-width="1.5"/>
+  <g font-size="12">
+    <text x="34" y="426">Members are copied with <tspan font-family="Menlo, Consolas, monospace">TJS_MEMBERENSURE | TJS_IGNOREPROP</tspan>; static members stay on the class object.</text>
+    <text x="34" y="443">Failed lookups on the <tspan font-style="italic">class object</tspan> fall back to its super classes, last first (superclass proxy).</text>
+  </g>
+</svg>

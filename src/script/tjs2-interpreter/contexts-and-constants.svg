@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 580" width="940" height="580" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#1f2328">
+  <rect x="0" y="0" width="940" height="580" fill="#ffffff" rx="8"/>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#57606a"/>
+    </marker>
+  </defs>
+
+  <text x="20" y="32" font-size="16" font-weight="bold">What a script block holds, and how engine objects are reached</text>
+  <g font-size="12">
+    <rect x="20" y="46" width="14" height="14" rx="3" fill="#fff8e1" stroke="#b08800" stroke-width="1.5"/>
+    <text x="40" y="58">script source / file bytes</text>
+    <rect x="200" y="46" width="14" height="14" rx="3" fill="#e8f0fe" stroke="#1a5fb4" stroke-width="1.5"/>
+    <text x="220" y="58">compiled contexts (tTJSInterCodeContext)</text>
+    <rect x="490" y="46" width="14" height="14" rx="3" fill="#e6f4ea" stroke="#1e7e34" stroke-width="1.5"/>
+    <text x="510" y="58">run-time objects (not in the bytecode)</text>
+  </g>
+
+  <!-- Source -->
+  <rect x="20" y="80" width="230" height="140" rx="6" fill="#fff8e1" stroke="#b08800" stroke-width="1.5"/>
+  <g font-family="Menlo, Consolas, monospace" font-size="11.5" xml:space="preserve">
+    <text x="32" y="102">function boot() {</text>
+    <text x="32" y="120">  var layer =</text>
+    <text x="32" y="138">    new Layer(window, null);</text>
+    <text x="32" y="156">  System.inform("loaded");</text>
+    <text x="32" y="174">}</text>
+    <text x="32" y="192">boot();</text>
+  </g>
+  <text x="32" y="212" font-size="11" fill="#57606a">one tTJSScriptBlock</text>
+
+  <line x1="250" y1="150" x2="278" y2="150" stroke="#57606a" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Context 0 -->
+  <rect x="280" y="80" width="320" height="110" rx="6" fill="#e8f0fe" stroke="#1a5fb4" stroke-width="1.5"/>
+  <text x="292" y="100" font-weight="bold">[0] "global"  <tspan font-weight="normal" font-family="Menlo, Consolas, monospace" font-size="12">ctTopLevel</tspan></text>
+  <g font-family="Menlo, Consolas, monospace" font-size="11.5" xml:space="preserve">
+    <text x="292" y="122">*0 = context [1]  (function object)</text>
+    <text x="292" y="140">*1 = "boot"</text>
+    <text x="292" y="162">const %1,*0; chgthis %1,%-1</text>
+    <text x="292" y="180">spds %-1.*1,%1; … calld …*1()</text>
+  </g>
+
+  <!-- Context 1 -->
+  <rect x="280" y="220" width="320" height="150" rx="6" fill="#e8f0fe" stroke="#1a5fb4" stroke-width="1.5"/>
+  <text x="292" y="240" font-weight="bold">[1] "boot"  <tspan font-weight="normal" font-family="Menlo, Consolas, monospace" font-size="12">ctFunction, Parent = [0]</tspan></text>
+  <g font-family="Menlo, Consolas, monospace" font-size="11.5" xml:space="preserve">
+    <text x="292" y="262">*0 = "window"   *1 = null</text>
+    <text x="292" y="280">*2 = "Layer"    *3 = "loaded"</text>
+    <text x="292" y="298">*4 = "System"   *5 = "inform"</text>
+    <text x="292" y="322">gpd %4, %-2.*2     // Layer</text>
+    <text x="292" y="340">gpd %2, %-2.*4     // System</text>
+    <text x="292" y="358">calld %0, %2.*5(%1)</text>
+  </g>
+
+  <!-- *0 reference arrow from ctx0 to ctx1 -->
+  <polyline points="600,118 612,118 612,232 602,232" fill="none" stroke="#1a5fb4" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="620" y="178" font-size="11" fill="#1a5fb4">object</text>
+  <text x="620" y="192" font-size="11" fill="#1a5fb4">constant</text>
+
+  <!-- Runtime -->
+  <rect x="690" y="80" width="230" height="290" rx="6" fill="#e6f4ea" stroke="#1e7e34" stroke-width="1.5"/>
+  <text x="702" y="100" font-weight="bold">global object</text>
+  <g font-family="Menlo, Consolas, monospace" font-size="11.5" xml:space="preserve">
+    <text x="702" y="124">.Layer   → tTJSNC_Layer</text>
+    <text x="702" y="142">.System  → tTJSNC_System</text>
+    <text x="702" y="160">.window  → (script-set)</text>
+    <text x="702" y="178">.boot    → closure of [1]</text>
+    <text x="702" y="196">.Array, .Dictionary, …</text>
+  </g>
+  <g font-size="12">
+    <text x="702" y="232">%-2 is the this-proxy:</text>
+    <text x="702" y="250">look in objthis first,</text>
+    <text x="702" y="268">then in global. The name</text>
+    <text x="702" y="286">is only a string constant;</text>
+    <text x="702" y="304">the class object is found</text>
+    <text x="702" y="322">at run time on every</text>
+    <text x="702" y="340"><tspan font-family="Menlo, Consolas, monospace">gpd</tspan> execution.</text>
+  </g>
+  <polyline points="600,322 660,322 660,124 688,124" fill="none" stroke="#1e7e34" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arr)"/>
+  <line x1="600" y1="340" x2="688" y2="142" stroke="#1e7e34" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arr)"/>
+
+  <!-- File encoding -->
+  <rect x="20" y="400" width="900" height="162" rx="6" fill="#fff8e1" stroke="#b08800" stroke-width="1.5"/>
+  <text x="32" y="422" font-weight="bold">The same block as a TJS2100 file (data entries are (type, index) pairs)</text>
+  <g font-family="Menlo, Consolas, monospace" font-size="11.5" xml:space="preserve">
+    <text x="32" y="446">DATA  strings: 0 "global"  1 "boot"  2 "window"  3 "Layer"  4 "loaded"  5 "System"  6 "inform"</text>
+    <text x="32" y="468">OBJS  toplevel = 0, count = 2</text>
+    <text x="32" y="490">  TJS2 [0] parent -1, name 0  data: (2 INTER_OBJECT, 1) (3 STRING, 1)</text>
+    <text x="32" y="512">  TJS2 [1] parent  0, name 1  data: (3,2) (1 OBJECT, 0) (3,3) (3,4) (3,5) (3,6)</text>
+  </g>
+  <text x="32" y="534" font-size="11" fill="#57606a">Native objects never appear: Layer and System are string 3 and string 5.</text>
+  <text x="32" y="550" font-size="11" fill="#57606a">A non-null object constant that is not a context of this block is written as (1, -1) and loads as null.</text>
+</svg>

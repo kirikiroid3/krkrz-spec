@@ -105,7 +105,9 @@ The compiler is a single pass:
 - The bison parser (`tjs2/syntax/tjs.y` → `tjs.tab.cpp`) emits code directly
   from its semantic actions into one `tTJSInterCodeContext` per function,
   class or property (`tjsInterCodeGen.h`).
-- `Commit()` threads jumps, and that is the only optimization.
+- Optimization is light: `MakeNP1`/`MakeNP2` fold operators on constant
+  operands, `PutData` reuses recent constant-pool entries, and `Commit()`
+  threads jumps. See [TJS2 Interpreter](script/tjs2-interpreter.md#optimizations).
 
 The result is an array of 32-bit code words plus a constant pool.
 

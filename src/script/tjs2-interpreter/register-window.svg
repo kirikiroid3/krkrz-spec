@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 470" width="940" height="470" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#1f2328">
+  <rect x="0" y="0" width="940" height="470" fill="#ffffff" rx="8"/>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#57606a"/>
+    </marker>
+  </defs>
+
+  <!-- Title + legend -->
+  <text x="40" y="34" font-size="16" font-weight="bold">Register window of one call (ExecuteAsFunction)</text>
+  <g font-size="12">
+    <rect x="40" y="50" width="14" height="14" rx="3" fill="#e8f0fe" stroke="#1a5fb4" stroke-width="1.5"/>
+    <text x="60" y="62">locals / arguments</text>
+    <rect x="200" y="50" width="14" height="14" rx="3" fill="#e6f4ea" stroke="#1e7e34" stroke-width="1.5"/>
+    <text x="220" y="62">reserved: this-proxy, this</text>
+    <rect x="400" y="50" width="14" height="14" rx="3" fill="#f6f8fa" stroke="#8c959f" stroke-width="1.5"/>
+    <text x="420" y="62">%0: always void</text>
+    <rect x="550" y="50" width="14" height="14" rx="3" fill="#fff8e1" stroke="#b08800" stroke-width="1.5"/>
+    <text x="570" y="62">frame (temporaries)</text>
+  </g>
+
+  <!-- allocation bracket -->
+  <line x1="40" y1="92" x2="898" y2="92" stroke="#57606a" stroke-width="1"/>
+  <line x1="40" y1="88" x2="40" y2="96" stroke="#57606a" stroke-width="1"/>
+  <line x1="898" y1="88" x2="898" y2="96" stroke="#57606a" stroke-width="1"/>
+  <text x="469" y="84" text-anchor="middle" font-size="12">one block from <tspan font-family="Menlo, Consolas, monospace">TJSVariantArrayStack::Allocate</tspan>: MaxVariableCount + VariableReserveCount(2) + 1 + MaxFrameCount variants</text>
+
+  <!-- ra pointer -->
+  <text x="547" y="122" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="12" font-weight="bold">ra</text>
+  <line x1="547" y1="126" x2="547" y2="146" stroke="#57606a" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- cells: width 78, y=148 h=44 -->
+  <g font-family="Menlo, Consolas, monospace" font-size="12" text-anchor="middle">
+    <rect x="40"  y="148" width="78" height="44" fill="#e8f0fe" stroke="#1a5fb4" stroke-width="1.5"/>
+    <text x="79"  y="175">%-(V+2)</text>
+    <rect x="118" y="148" width="78" height="44" fill="#e8f0fe" stroke="#1a5fb4" stroke-width="1.5"/>
+    <text x="157" y="175">…</text>
+    <rect x="196" y="148" width="78" height="44" fill="#e8f0fe" stroke="#1a5fb4" stroke-width="1.5"/>
+    <text x="235" y="175">%-4</text>
+    <rect x="274" y="148" width="78" height="44" fill="#e8f0fe" stroke="#1a5fb4" stroke-width="1.5"/>
+    <text x="313" y="175">%-3</text>
+    <rect x="352" y="148" width="78" height="44" fill="#e6f4ea" stroke="#1e7e34" stroke-width="1.5"/>
+    <text x="391" y="175">%-2</text>
+    <rect x="430" y="148" width="78" height="44" fill="#e6f4ea" stroke="#1e7e34" stroke-width="1.5"/>
+    <text x="469" y="175">%-1</text>
+    <rect x="508" y="148" width="78" height="44" fill="#f6f8fa" stroke="#8c959f" stroke-width="1.5"/>
+    <text x="547" y="175">%0</text>
+    <rect x="586" y="148" width="78" height="44" fill="#fff8e1" stroke="#b08800" stroke-width="1.5"/>
+    <text x="625" y="175">%1</text>
+    <rect x="664" y="148" width="78" height="44" fill="#fff8e1" stroke="#b08800" stroke-width="1.5"/>
+    <text x="703" y="175">%2</text>
+    <rect x="742" y="148" width="78" height="44" fill="#fff8e1" stroke="#b08800" stroke-width="1.5"/>
+    <text x="781" y="175">…</text>
+    <rect x="820" y="148" width="78" height="44" fill="#fff8e1" stroke="#b08800" stroke-width="1.5"/>
+    <text x="859" y="175">%F</text>
+  </g>
+
+  <!-- group brackets under cells -->
+  <g stroke="#57606a" stroke-width="1" fill="none">
+    <polyline points="42,200 42,206 350,206 350,200"/>
+    <polyline points="354,200 354,206 428,206 428,200"/>
+    <polyline points="432,200 432,206 506,206 506,200"/>
+    <polyline points="510,200 510,206 584,206 584,200"/>
+    <polyline points="588,200 588,206 896,206 896,200"/>
+  </g>
+
+  <!-- group descriptions -->
+  <g font-size="12">
+    <text x="196" y="226" text-anchor="middle">locals, V = MaxVariableCount</text>
+    <text x="196" y="242" text-anchor="middle">local #n lives in %-(n+3)</text>
+    <text x="196" y="258" text-anchor="middle">arguments are the first locals:</text>
+    <text x="196" y="274" text-anchor="middle">arg0 = %-3, arg1 = %-4, …</text>
+
+    <text x="391" y="226" text-anchor="middle">this-proxy</text>
+    <text x="391" y="242" text-anchor="middle">objthis, then</text>
+    <text x="391" y="258" text-anchor="middle">global</text>
+
+    <text x="469" y="226" text-anchor="middle">this</text>
+    <text x="469" y="242" text-anchor="middle">(objthis)</text>
+
+    <text x="547" y="226" text-anchor="middle">void;</text>
+    <text x="547" y="242" text-anchor="middle">"no result"</text>
+    <text x="547" y="258" text-anchor="middle">target</text>
+
+    <text x="742" y="226" text-anchor="middle">frame, F = MaxFrameCount</text>
+    <text x="742" y="242" text-anchor="middle">expression temporaries,</text>
+    <text x="742" y="258" text-anchor="middle">call arguments and results</text>
+  </g>
+
+  <!-- DataArea strip -->
+  <text x="40" y="318" font-weight="bold">Per-context constant pool (DataArea), read-only at run time</text>
+  <g font-family="Menlo, Consolas, monospace" font-size="12" text-anchor="middle">
+    <rect x="40"  y="330" width="78" height="36" fill="#e8f0fe" stroke="#1a5fb4" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <text x="79"  y="353">*0</text>
+    <rect x="118" y="330" width="78" height="36" fill="#e8f0fe" stroke="#1a5fb4" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <text x="157" y="353">*1</text>
+    <rect x="196" y="330" width="78" height="36" fill="#e8f0fe" stroke="#1a5fb4" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <text x="235" y="353">*2</text>
+    <rect x="274" y="330" width="78" height="36" fill="#e8f0fe" stroke="#1a5fb4" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <text x="313" y="353">…</text>
+  </g>
+  <g font-size="12">
+    <text x="370" y="344">operand of <tspan font-family="Menlo, Consolas, monospace">const</tspan>, and the member-name operand of</text>
+    <text x="370" y="360"><tspan font-family="Menlo, Consolas, monospace">gpd/spd*/calld/typeofd/deld/…pd</tspan> (written <tspan font-family="Menlo, Consolas, monospace">*n</tspan>)</text>
+  </g>
+
+  <!-- notes -->
+  <rect x="40" y="388" width="858" height="66" rx="6" fill="#f6f8fa" stroke="#8c959f" stroke-width="1.5"/>
+  <g font-size="12">
+    <text x="54" y="408">In memory every operand is a byte offset: <tspan font-family="Menlo, Consolas, monospace">TJS_TO_VM_REG_ADDR(n) = n * sizeof(tTJSVariant)</tspan>, relative to <tspan font-family="Menlo, Consolas, monospace">ra</tspan> or to DataArea.</text>
+    <text x="54" y="426">In a TJS2100 file the same operands are plain indices (n), narrowed to 16 bits.</text>
+    <text x="54" y="444">On return only %-2 is cleared; the block goes back to the pool with the other values still referenced.</text>
+  </g>
+</svg>

@@ -6,8 +6,9 @@
 
 # Script Engine
 
-- [TJS2 Language]()
-- [TJS2 Runtime and Native Class Interface]()
+- [TJS2 Language](script/tjs2-language.md)
+- [TJS2 Interpreter](script/tjs2-interpreter.md)
+- [TJS2 Runtime and Native Class Interface](script/tjs2-runtime.md)
 
 # Core
 
