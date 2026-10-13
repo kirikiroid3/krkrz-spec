@@ -38,3 +38,5 @@ and write spec chapters.
    from code as **Inferred**, **Unverified**, or **Open question**.
 4. Build with `mdbook build`; it MUST succeed with no warnings about missing
    files. Preview with `mdbook serve`.
+5. If you need to draw diagram or figure to show something, prefer spawning a 
+   subagent to draw SVG, instead of drawing in ASCII.
